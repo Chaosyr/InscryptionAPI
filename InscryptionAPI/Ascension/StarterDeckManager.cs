@@ -149,6 +149,23 @@ public static class StarterDeckManager
 
         return fsd;
     }
+    
+    public static FullStarterDeck New(string pluginGuid, string name, string title, Texture2D iconTexture, string[] cardNames, int unlockLevel = 0)
+    {
+        StarterDeckInfo info = ScriptableObject.CreateInstance<StarterDeckInfo>();
+        info.title = title;
+        info.iconSprite = TextureHelper.ConvertTexture(iconTexture, TextureHelper.SpriteType.StarterDeckIcon);
+        info.name = pluginGuid + "_" + name;
+
+        FullStarterDeck fsd = new();
+        fsd.Info = info;
+        fsd.UnlockLevel = unlockLevel;
+        fsd.CardNames = cardNames.ToList();
+
+        NewDecks.Add(fsd);
+
+        return fsd;
+    }
 
     public static FullStarterDeck New(string pluginGuid, string title, string pathToIconTexture, string[] cardNames, int unlockLevel = 0)
     {
