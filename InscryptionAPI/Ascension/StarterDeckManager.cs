@@ -172,6 +172,12 @@ public static class StarterDeckManager
         Texture2D texture = TextureHelper.GetImageAsTexture(pathToIconTexture);
         return New(pluginGuid, title, texture, cardNames, unlockLevel);
     }
+    
+    public static FullStarterDeck New(string pluginGuid, string name, string title, string pathToIconTexture, string[] cardNames, int unlockLevel = 0)
+    {
+        Texture2D texture = TextureHelper.GetImageAsTexture(pathToIconTexture);
+        return New(pluginGuid, name, title, texture, cardNames, unlockLevel);
+    }
 
     [HarmonyPatch(typeof(AscensionUnlockSchedule), "StarterDeckIsUnlockedForLevel")]
     [HarmonyPrefix]
